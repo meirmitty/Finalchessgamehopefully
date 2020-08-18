@@ -16,67 +16,74 @@ public class Bishop extends Piece {
     }
 
     //checks to see if the move is legal
-    public boolean isMovelegal(Board temp, int x, int y, Boolean realmove) {
+    public boolean isMoveLegal(Board temp, int x, int y, boolean realmove) {
+        System.out.println("In bishop");
         //they are not moving anywhere
         if ((getX() == x) && (getY() == y)) {
             System.out.println("this move is legal your not moving anywhere");
             return false;
         }
         //checks to see if you are attacking your own piece
-        else if (getPieceColor() == temp.getChessboard()[x][y].getPiece().getPieceColor()) {
-            System.out.println("you are attacking your own piece");
-            return false;
-        }
-        //they arent on the same axis
-        else if ((Math.abs(getX() - x)) != (Math.abs(getY() - y))) {
-            System.out.println("this move is illegal");
-            return false;
-        }
-        //in the case were we can move it we now have to check if there is a piece in the way
-        else {
-            //if xis smaller then target and y is also smaller
-            if ((getX() < x) && (getY() < y)) {
-                for (int i = 1; i < x - getX(); i++) {
-                    if (temp.getChessboard()[getX() + i][getY() + i].isPieceOn()) {
-                        System.out.println("this move is illegal there is something in the way");
-                        return false;
-                    }
-                }
-                evalMove(temp, x, y, realmove);
+         if (temp.getChessboard()[x][y].isPieceOn()) {
+             if (getPieceColor() == temp.getChessboard()[x][y].getPiece().getPieceColor()) {
+                 System.out.println("you are attacking your own piece");
+                 return false;
+             }
+         }
+            //they arent on the same axis
+             if ((Math.abs(getX() - x)) != (Math.abs(getY() - y))) {
+                System.out.println("this move is illegal");
+                return false;
             }
-            //x is bigger and y is bigger than target
-            else if ((getX() > x) && (getY() > y)) {
-                for (int i = 1; i < getX() - x; i++) {
-                    if (temp.getChessboard()[getX() - i][getY() - i].isPieceOn()) {
-                        System.out.println("this move is illegal");
-                        return false;
+            //in the case were we can move it we now have to check if there is a piece in the way
+            else {
+                //if xis smaller then target and y is also smaller
+                if ((getX() < x) && (getY() < y)) {
+                    for (int i = 1; i < x - getX(); i++) {
+                        if (temp.getChessboard()[getX() + i][getY() + i].isPieceOn()) {
+                            System.out.println("this move is illegal there is something in the way");
+                            return false;
+                        }
                     }
+                    evalMove(temp, x, y, realmove);
+                    return true;
                 }
-                evalMove(temp, x, y, realmove);
-            }
-            //x is bigger and y is smaller
-            else if ((getX() > x) && (getY() < y)) {
-                for (int i = 1; i < getX() - x; i++) {
-                    if (temp.getChessboard()[getX() - i][getY() + i].isPieceOn()) {
-                        System.out.println("this move is illegal");
-                        return false;
+                //x is bigger and y is bigger than target
+                else if ((getX() > x) && (getY() > y)) {
+                    for (int i = 1; i < getX() - x; i++) {
+                        if (temp.getChessboard()[getX() - i][getY() - i].isPieceOn()) {
+                            System.out.println("this move is illegal");
+                            return false;
+                        }
                     }
+                    evalMove(temp, x, y, realmove);
+                    return true;
                 }
-                evalMove(temp, x, y, realmove);
+                //x is bigger and y is smaller
+                else if ((getX() > x) && (getY() < y)) {
+                    for (int i = 1; i < getX() - x; i++) {
+                        if (temp.getChessboard()[getX() - i][getY() + i].isPieceOn()) {
+                            System.out.println("this move is illegal");
+                            return false;
+                        }
+                    }
+                    evalMove(temp, x, y, realmove);
+                    return true;
 
-            } else if ((getX() > x) && (getY() < y))
-            //out x is bigger then the location
-            {
-                for (int i = 1; i < getX() - x; i++) {
-                    if (temp.getChessboard()[getX() - i][getY() + i].isPieceOn()) {
-                        System.out.println("this move is illegal there is a piece in the way");
-                        return false;
-                    }
+                } else if ((getX() > x) && (getY() < y))
+                //out x is bigger then the location
+                {
+                    for (int i = 1; i < getX() - x; i++) {
+                        if (temp.getChessboard()[getX() - i][getY() + i].isPieceOn()) {
+                            System.out.println("this move is illegal there is a piece in the way");
+                            return false;
+                        }
 
+                    }
+                    evalMove(temp, x, y, realmove);
+                    return true;
                 }
-                evalMove(temp, x, y, realmove);
             }
-        }
         return true;
     }
 }

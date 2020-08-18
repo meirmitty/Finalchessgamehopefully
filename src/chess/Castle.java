@@ -16,11 +16,13 @@ public class Castle extends Piece{
         this.type = type;
     }
     public boolean isMoveLegal(Board temp, int x, int y, boolean realMove) {
-        if (temp.getChessboard()[x][y].getPiece().getPieceColor() == this.getPieceColor()) {
-            System.out.println("this move is illegal you are attacking your own piece");
-            return false;
+        if(temp.getChessboard()[x][y].isPieceOn()) {
+            if (temp.getChessboard()[x][y].getPiece().getPieceColor() == this.getPieceColor()) {
+                System.out.println("this move is illegal you are attacking your own piece");
+                return false;
+            }
         }
-            if (temp.getChessboard()[x][y].isPieceOn()) {
+
                 //if they are not on the same tzir
                 if ((x != this.getX()) && (y != this.getY())) {
                     System.out.print("this move is illegal you are out of bounds");
@@ -65,7 +67,6 @@ public class Castle extends Piece{
                     evalMove(temp, x, y, realMove);
                     return true;
                 }
-            }
 
         return false;
     }
