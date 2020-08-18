@@ -54,6 +54,26 @@ public class Board {
             System.out.println();
         }
     }
+    public boolean isCheck(Board temp, int x, int y){
+        if(temp.getChessboard()[x][y].getPiece().getPieceColor()==PieceColor.WHITE){
+            for (int i = 0; i < temp.blackList.size(); i++) {
+                if(temp.blackList.get(i).isMoveLegal(temp, temp.arrofKings[1].getX(), temp.arrofKings[1].getY(), false)){
+                    return true;
+                }
+            }
+            return false;
+
+        }
+        else if(temp.getChessboard()[x][y].getPiece().getPieceColor()==PieceColor.BLACK){
+            for (int i = 0; i < temp.blackList.size(); i++) {
+                if(temp.whiteList.get(i).isMoveLegal(temp, temp.arrofKings[0].getX(), temp.arrofKings[0].getY(), false)){
+                    return true;
+                }
+            }
+            return false;
+        }
+        return false;
+    }
 
     //initializes the board
     public void makeBoard() {
