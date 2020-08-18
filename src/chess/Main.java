@@ -12,14 +12,9 @@ public class Main {
 
         //myChess.getChessboard()[6][4].getPiece().isMoveLegal(myChess, 5, 4, true);
         //myChess.getChessboard()[7][5].getPiece().isMoveLegal(myChess, 3, 1, true);
-
+        int j;
 
         int i = 0;
-
-
-
-
-
 
         while(true){
             System.out.println("I is:" + i);

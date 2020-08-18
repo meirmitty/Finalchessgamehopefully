@@ -43,7 +43,12 @@ public class Pawn extends Piece{
 
     public boolean isMoveLegal(Board temp, int x, int y, boolean realmove) {
         if (!realmove) {
-
+            if (((y == getY() + 1) || (y == getY() - 1)) && x == getX() + (1 * getZ()) && temp.getChessboard()[x][y].isPieceOn()) {
+                if (realmove) {
+                    evalMove(temp, x, y, realmove);
+                    return true;
+                }
+            }
         } else {
             if (((y == getY() + 1) || (y == getY() - 1)) && x == getX() + (1 * getZ()) && temp.getChessboard()[x][y].isPieceOn()) {
                 if (realmove) {
