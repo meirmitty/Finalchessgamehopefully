@@ -43,12 +43,42 @@ public class Piece {
     public void printPiece() {
     }
 
+    public boolean isMoveLegal(Board temp, int x, int y, boolean realmove){ }
+
+    public void evalMove(Board temp, int x, int y, boolean realmove){
+        if (realmove) {
+            if (temp.getChessboard()[x][y].isPieceOn()) {
+                attackPiece(temp, x, y);
+            } else {
+                movePiece(temp, x, y);
+            }
+        }
+    }
 
     public void movePiece(Board temp, int x, int y) {
+        temp.getChessboard()[x][y] = temp.getChessboard()[getX()][getY()];
+        temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
+        temp.getChessboard()[x][y].setPieceOn(true);
+        setX(x);
+        setY(y);
     }
 
 
 
     public void attackPiece(Board temp, int x, int y) {
+        if(temp.gettile(x,y).getPiece().getPieceColor()==PieceColor.WHITE){
+            temp.whiteList.remove(temp.gettile(x,y).getPiece());
+        }
+        else
+        {
+            temp.blackList.remove(temp.gettile(x,y).getPiece());
+        }
+        temp.getChessboard()[x][y].setPiece(this);
+        temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
+        temp.getChessboard()[x][y].setPieceOn(true);
+        setX(x);
+        setY(y);
+
+
     }
 }

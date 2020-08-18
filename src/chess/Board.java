@@ -4,7 +4,6 @@ package chess;
 import java.util.ArrayList;
 import java.util.List;
 
-//class of board
 public class Board {
     //makes array of our kings
     Piece[] arrofKings=new Piece[2];
