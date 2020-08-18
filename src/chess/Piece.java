@@ -43,7 +43,9 @@ public class Piece {
     public void printPiece() {
     }
 
-    public boolean isMoveLegal(Board temp, int x, int y, boolean realmove){ }
+    public boolean isMoveLegal(Board temp, int x, int y, boolean realmove){
+        return false;
+    }
 
     public void evalMove(Board temp, int x, int y, boolean realmove){
         if (realmove) {
