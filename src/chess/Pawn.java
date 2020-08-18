@@ -42,6 +42,10 @@ public class Pawn extends Piece{
     }
 
     public boolean isMoveLegal(Board temp, int x, int y, boolean realmove) {
+        if((y == getY() + 1) || (y == getY() - 1) && !temp.getChessboard()[x][y].isPieceOn()){
+            return false;
+        }
+
         if (!realmove) {
             if (((y == getY() + 1) || (y == getY() - 1)) && x == getX() + (1 * getZ()) && temp.getChessboard()[x][y].isPieceOn()) {
                 if (realmove) {
@@ -71,6 +75,7 @@ public class Pawn extends Piece{
                         }
                     } else {
                         System.out.println("illegal move");
+                        return false;
                     }
                 }
 
