@@ -36,14 +36,16 @@ public class RunGame {
                 }
                 int num1=scanNum.nextInt();
                 int num2=scanNum.nextInt();
-                if(myChess.getChessboard()[x][y].getPiece().isMoveLegal(myChess, num1, num2, false)){
-                    myChess.getChessboard()[x][y].getPiece().isMoveLegal(myChess, num1, num2, true);
-                    if(myChess.isCheck(myChess, x, y)){
+                boolean mil=false;
+                while(true){
+                    mil=myChess.getChessboard()[x][y].getPiece().isMoveLegal(myChess, num1, num2, true);
+                    if(myChess.isCheck(myChess, i)){
                         myChess.getChessboard()[num1][num2].getPiece().isMoveLegal(myChess, x, y, true);
+                        mil=false;
                     }
-                } else {
-                    System.out.println("Please do a legal move");
-                    continue;
+                    if(mil){
+                        break;
+                    }
                 }
 
             }
@@ -61,27 +63,20 @@ public class RunGame {
                 int num1=scanNum.nextInt();
                 int num2=scanNum.nextInt();
 
-                if(myChess.getChessboard()[x][y].getPiece().isMoveLegal(myChess, num1, num2, false)){
-                    myChess.getChessboard()[x][y].getPiece().isMoveLegal(myChess, num1, num2, true);
-                    if(myChess.isCheck(myChess, x, y)){
+                boolean mil=false;
+                while(true){
+                    mil=myChess.getChessboard()[x][y].getPiece().isMoveLegal(myChess, num1, num2, true);
+                    if(myChess.isCheck(myChess, i)){
+                        System.out.println("there is a check");
                         myChess.getChessboard()[num1][num2].getPiece().isMoveLegal(myChess, x, y, true);
+                        mil=false;
                     }
-                } else {
-                    System.out.println("Please do a legal move");
-                    continue;
+                    if(mil){
+                        break;
+                    }
                 }
             }
-
-
             i++;
         }
     }
-
-
-
-
-
-
-
-
 }

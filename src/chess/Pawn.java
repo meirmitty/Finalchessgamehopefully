@@ -46,33 +46,28 @@ public class Pawn extends Piece{
             return false;
         }
 
-        if (!realmove) {
+
             if (((y == getY() + 1) || (y == getY() - 1)) && x == getX() + (1 * getZ()) && temp.getChessboard()[x][y].isPieceOn()) {
                 if (realmove) {
                     evalMove(temp, x, y, realmove);
                     return true;
                 }
-            }
-        } else {
-            if (((y == getY() + 1) || (y == getY() - 1)) && x == getX() + (1 * getZ()) && temp.getChessboard()[x][y].isPieceOn()) {
-                if (realmove) {
-                    evalMove(temp, x, y, realmove);
-                    return true;
-                }
+                return true;
             }
             if (getX() == getOriginalPlacement()) {
                 if (!temp.getChessboard()[getX() + getZ()][getY()].isPieceOn()) {
-                    int doubleJump = 1;
                     if ((x == (getOriginalPlacement() + getZ() * 2)) && !temp.getChessboard()[getX() + getZ() * 2][getY()].isPieceOn()) {
                         if (realmove) {
                             evalMove(temp, x, y, realmove);
                             return true;
                         }
+                        return false;
                     } else if ((x == (getOriginalPlacement() + getZ())) && !temp.getChessboard()[getX() + getZ()][getY()].isPieceOn()) {
                         if (realmove) {
                             evalMove(temp, x, y, realmove);
                             return true;
                         }
+                        return false;
                     } else {
                         System.out.println("illegal move");
                         return false;
@@ -85,9 +80,10 @@ public class Pawn extends Piece{
                         evalMove(temp, x, y, realmove);
                         return true;
                     }
+                    return false;
                 }
             }
-        }
+
         return false;
     }
 
