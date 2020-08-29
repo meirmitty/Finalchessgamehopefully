@@ -3,7 +3,7 @@ package chess;
 public class Castle extends Piece{
     private String type = "Castle";
     public Castle(PieceColor pieceColor, int x, int y) {
-        super(pieceColor, x, y);
+        super(pieceColor, x, y, PieceType.ROOK);
     }
     public void printPiece() {
         System.out.print(this.getPieceColor() == PieceColor.WHITE ? "w" : "b");

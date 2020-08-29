@@ -2,7 +2,7 @@ package chess;
 
 public class Knight extends Piece {
     public Knight(PieceColor ecolor, int x, int y) {
-        super(ecolor, x, y);
+        super(ecolor, x, y, PieceType.KNIGHT);
     }
     public void printPiece() {
         System.out.print(this.getPieceColor() == PieceColor.WHITE ? "w" : "b");

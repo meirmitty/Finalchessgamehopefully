@@ -13,7 +13,7 @@ public class King extends Piece{
     }
 
     public King(PieceColor ecolor, int x, int y) {
-        super(ecolor, x, y);
+        super(ecolor, x, y, PieceType.KING);
     }
 
     public void printPiece() {

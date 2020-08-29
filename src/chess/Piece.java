@@ -5,8 +5,18 @@ public class Piece {
     private int x;
     private int y;
     private PieceColor piececolor;
+    private PieceType type;
 
-    public Piece(PieceColor pieceColor, int x, int y) {
+    public PieceType getPieceType() {
+        return type;
+    }
+    public void setType(PieceType type){
+        this.type=type;
+    }
+
+
+    public Piece(PieceColor pieceColor, int x, int y,PieceType type) {
+        this.type = type;
         this.piececolor = pieceColor;
         this.x = x;
         this.y = y;
@@ -73,7 +83,7 @@ public class Piece {
         {
             temp.blackList.remove(temp.gettile(x,y).getPiece());
         }
-        temp.getChessboard()[x][y].setPiece(this);
+        //temp.getChessboard()[x][y].setPiece(this, this.type,this.piececolor);
         temp.getChessboard()[getX()][getY()] = new Tiles(false, null, temp.getChessboard()[getX()][getY()].getTileColor());
         temp.getChessboard()[x][y].setPieceOn(true);
         setX(x);

@@ -1,10 +1,11 @@
 package chess;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class RunGame {
 
-    public void rungame(){
+    public void rungame() throws IOException {
         Scanner scanNum = new Scanner(System.in);
 
         Board myChess = new Board();

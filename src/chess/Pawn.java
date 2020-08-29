@@ -8,7 +8,7 @@ public class Pawn extends Piece{
 
 
     public Pawn(PieceColor pieceColor, int x, int y) {
-        super(pieceColor, x, y);
+        super(pieceColor, x, y, PieceType.PAWN);
         if (pieceColor == PieceColor.WHITE) {
             setZ(-1);
             setOriginalPlacement(6);
